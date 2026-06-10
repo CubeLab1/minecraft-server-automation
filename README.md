@@ -6,6 +6,10 @@ This project automates the deployment and configuration of a Minecraft server on
 
 Terraform was used to provision AWS resources, including an EC2 instance and security group. Ansible was used to install Java, deploy the Minecraft server, accept the EULA, and configure a systemd service for automatic startup and management. Verification was performed using systemd status checks and Nmap service detection.
 
+Repository:
+
+https://github.com/CubeLab1/minecraft-server-automation
+
 ---
 
 ## Requirements
@@ -16,6 +20,7 @@ The following software and services were used:
 * Terraform v1.15.5
 * Ansible Core 2.16.3
 * AWS EC2
+* AWS Region: us-east-1
 * Nmap 7.94
 * Git
 * SSH Key Pair
@@ -53,7 +58,6 @@ minecraft-server-automation/
 ├── ansible/
 │   ├── inventory.ini
 │   └── minecraft.yml
-├── scripts/
 ├── screenshots/
 │   ├── figure1-repository-structure.png
 │   ├── figure2-terraform-configuration.png
@@ -62,6 +66,7 @@ minecraft-server-automation/
 │   ├── figure5-ansible-playbook.png
 │   ├── figure6-minecraft-service.png
 │   └── figure7-nmap-verification.png
+├── .gitignore
 └── README.md
 ```
 
@@ -148,7 +153,7 @@ Nmap successfully detected the Minecraft service running on TCP port 25565. Serv
 ### Step 1 – Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/CubeLab1/minecraft-server-automation.git
 cd minecraft-server-automation
 ```
 
@@ -190,6 +195,14 @@ The deployment process can be repeated without manually interacting with the AWS
 
 ---
 
+## Conclusion
+
+This project demonstrated how Infrastructure as Code (IaC) and configuration management tools can be combined to automate cloud deployments. Terraform was used to provision AWS resources while Ansible configured and deployed the Minecraft server. The final deployment was validated through service status checks and network verification using Nmap.
+
+The deployment process can be executed entirely through Terraform and Ansible commands without manually provisioning resources through the AWS Management Console. This approach improves repeatability, reduces configuration errors, and simplifies future deployments.
+
+---
+
 ## Resources and Sources
 
 * Terraform Documentation: https://developer.hashicorp.com/terraform/docs
@@ -198,4 +211,5 @@ The deployment process can be repeated without manually interacting with the AWS
 * Minecraft Server Documentation: https://www.minecraft.net/
 * Nmap Documentation: https://nmap.org/docs.html
 * Ubuntu Documentation: https://ubuntu.com/server/docs
+
 
